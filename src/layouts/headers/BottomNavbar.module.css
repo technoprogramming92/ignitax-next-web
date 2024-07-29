@@ -1,0 +1,48 @@
+/* components/BottomNavbar.module.css */
+
+.bottomNavbar {
+  position: fixed;
+  bottom: 35px; /* Adjust bottom margin */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: 80%; /* Adjust width as needed */
+  max-width: 800px; /* Set a max-width */
+  background-color: #333;
+  color: #fff;
+  z-index: 1000;
+  border-radius: 50px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Floating effect */
+  transition: transform 0.3s ease-in-out, bottom 0.3s ease-in-out;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  margin: 0;
+}
+
+.navItem {
+  text-align: center;
+}
+
+.navLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.navLink:hover {
+  color: #ff9800;
+}
+
+.sticky {
+  transform: translateX(-50%) translateY(0);
+}
+
+.hidden {
+  transform: translateX(-50%) translateY(100%);
+  bottom: -80px; /* Move out of view */
+}

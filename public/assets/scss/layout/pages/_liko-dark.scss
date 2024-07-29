@@ -491,6 +491,11 @@
     }
 
     & .tp-header-3-area.header-sticky {
+
+        position: fixed;
+
+        width: 100%;
+        z-index: 1000;
         box-shadow: none;
         backdrop-filter: initial;
         background: none;

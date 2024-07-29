@@ -14,13 +14,17 @@ export default function HeaderFour() {
     useSticky();
   const [openCartMini, setOpenCartMini] = React.useState(false);
   const [openOffCanvas, setOpenOffCanvas] = React.useState(false);
+
   useEffect(() => {
     headerFullWidth();
     adjustMenuBackground();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
+      {/* Other page content goes here */}
+
       <header>
         <div
           id='header-sticky'

@@ -31,9 +31,17 @@ import PortfolioSliderHomeEleven from "@/components/portfolio/slider/portfolio-s
 import HeroBannerSix from "@/components/hero-banner/hero-banner-six";
 import HeaderSix from "@/layouts/headers/header-six";
 import HeaderFour from "@/layouts/headers/header-four";
+import { useEffect } from "react";
+import BottomNavbar from "@/layouts/headers/BottomNavbar";
 
 const HomeIgnitax = () => {
-  //   useScrollSmooth();
+  useScrollSmooth();
+  useEffect(() => {
+    document.body.classList.add("tp-smooth-scroll");
+    return () => {
+      document.body.classList.remove("tp-smooth-scroll");
+    };
+  }, []);
   useGSAP(() => {
     const timer = setTimeout(() => {
       fadeAnimation();
@@ -51,11 +59,8 @@ const HomeIgnitax = () => {
   });
   return (
     <Wrapper>
-      {/* header area start */}
-      <HeaderFour />
-      {/* header area end */}
-
       <div>
+        <BottomNavbar />
         <main>
           {/* hero area start */}
           <HeroBannerSix />

@@ -5,6 +5,8 @@
 /*----------------------------------------*/
 
 .tp-header-3 {
+
+
     &-area {
         &.header-sticky {
 
@@ -30,6 +32,7 @@
         display: inline-block;
         padding: 0px 15px;
         padding-right: 30px;
+
 
         @at-root {
             .menu-bg {

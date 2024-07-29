@@ -3,17 +3,19 @@
 /*----------------------------------------*/
 /*  3.1 Header Style 1
 /*----------------------------------------*/
-.container{
+.container {
     transition: all 1s;
 }
-.tp-transparent{
+
+.tp-transparent {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
 }
-.header-sticky{
+
+.header-sticky {
     position: fixed;
     top: 0;
     left: 0;
@@ -26,13 +28,16 @@
     box-shadow: 0px 1px 3px 0px rgba(18, 20, 32, 0.14);
     -webkit-animation: 0.95s ease 0s normal forwards 1 running headerSlideDown;
     animation: 0.95s ease 0s normal forwards 1 running headerSlideDown;
-    & .ab-logo-1{
+
+    & .ab-logo-1 {
         display: none;
     }
-    & .ab-logo-2{
+
+    & .ab-logo-2 {
         display: block;
     }
-    &::after{
+
+    &::after {
         position: absolute;
         content: '';
         top: 0;
@@ -43,62 +48,72 @@
         z-index: -1;
     }
 }
-.ab-logo-2{
+
+.ab-logo-2 {
     display: none;
 }
 
-.tp-header-style-9{
+.tp-header-style-9 {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
 }
 
-.logo-2{
+.logo-2 {
     display: none;
 }
-.tp-header{
-    &-logo{
-        & img{
+
+.tp-header {
+    &-logo {
+        & img {
             width: 85px;
             height: 100%;
         }
     }
-    &-area{
-        &.header-sticky{
-            & .container{
+
+    &-area {
+        &.header-sticky {
+            & .container {
                 max-width: 100%;
+
             }
-            & .tp-header-menu > nav > ul > li > a {
+
+            & .tp-header-menu>nav>ul>li>a {
                 padding: 27px 0;
             }
         }
     }
 }
-.tp-header{
-    &-mob-space{
-        @media #{$lg,$md,$xs}{
+
+.tp-header {
+    &-mob-space {
+        @media #{$lg,$md,$xs} {
             padding: 20px 0px;
         }
     }
-    &-area{
-        @media #{$xl}{
+
+    &-area {
+        @media #{$xl} {
             padding-left: 30px;
             padding-right: 30px;
         }
-        @media #{$lg,$md,$xs}{
+
+        @media #{$lg,$md,$xs} {
             padding-left: 0px;
             padding-right: 0px;
         }
     }
-    &-menu{
-        & > nav{
-            & > ul{
-                & > li{
+
+    &-menu {
+        &>nav {
+            &>ul {
+                &>li {
                     display: inline-block;
                     list-style-type: none;
                     margin: 0px 25px;
-                    & > a{
+
+                    &>a {
                         padding: 40px 0;
                         display: inline-block;
                         font-weight: 500;
@@ -111,19 +126,23 @@
             }
         }
     }
-    &-bar{
+
+    &-bar {
         line-height: 0;
-        & button{
-            & span{
+
+        & button {
+            & span {
                 height: 2px;
                 width: 40px;
                 background-color: var(--tp-common-black);
                 display: block;
                 margin: 6px 0;
             }
-            &:hover{
-                & span{
+
+            &:hover {
+                & span {
                     animation: bar_anim 0.8s cubic-bezier(0.44, 1.1, 0.53, 0.99) 1 forwards;
+
                     &:nth-child(2) {
                         animation-delay: 0.1s;
                     }
