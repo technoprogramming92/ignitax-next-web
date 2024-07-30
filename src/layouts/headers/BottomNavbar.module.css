@@ -1,26 +1,29 @@
-/* components/BottomNavbar.module.css */
-
 .bottomNavbar {
   position: fixed;
-  bottom: 35px; /* Adjust bottom margin */
+  bottom: 20px; /* Adjust bottom margin */
   left: 50%;
   transform: translateX(-50%); /* Center horizontally */
   width: 80%; /* Adjust width as needed */
   max-width: 800px; /* Set a max-width */
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   z-index: 1000;
-  border-radius: 50px; /* Optional: Rounded corners */
+  border-radius: 50px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Floating effect */
-  transition: transform 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
 }
 
 .navList {
   list-style: none;
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 0;
   margin: 0;
+  flex: 1;
 }
 
 .navItem {
@@ -28,7 +31,7 @@
 }
 
 .navLink {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 0.3s ease-in-out;
@@ -38,8 +41,28 @@
   color: #ff9800;
 }
 
-.sticky {
+.logo {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out,
+    height 0.3s ease-in-out;
+}
+
+.navbarCollapsed .bottomNavbar {
+  width: 50px; /* Adjust size to match logo */
   transform: translateX(-50%) translateY(0);
+}
+
+.navbarCollapsed .navList {
+  display: none;
+}
+
+.navbarCollapsed .logo {
+  width: 50px; /* Adjust size to match logo */
+  height: 50px; /* Adjust size to match logo */
+  transform: translateX(-50%);
 }
 
 .hidden {

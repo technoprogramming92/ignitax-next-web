@@ -1,6 +1,11 @@
 "use client";
 
-import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
+import {
+  cursorAnimation,
+  ScrollSmoother,
+  ScrollTrigger,
+  SplitText,
+} from "@/plugins";
 import LineText from "@/components/line-text/line-text";
 import ProjectFour from "@/components/project/project-four";
 
@@ -33,15 +38,27 @@ import HeaderSix from "@/layouts/headers/header-six";
 import HeaderFour from "@/layouts/headers/header-four";
 import { useEffect } from "react";
 import BottomNavbar from "@/layouts/headers/BottomNavbar";
+import PortfolioSliderHomeTwelve from "@/components/portfolio/slider/portfolio-slider-home-twelve";
 
 const HomeIgnitax = () => {
   useScrollSmooth();
+
   useEffect(() => {
-    document.body.classList.add("tp-smooth-scroll");
+    document.body.classList.add("tp-magic-cursor");
     return () => {
-      document.body.classList.remove("tp-smooth-scroll");
+      document.body.classList.remove("tp-magic-cursor");
     };
   }, []);
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      document.querySelector(".tp-magic-cursor")
+    ) {
+      cursorAnimation();
+    }
+  }, []);
+
   useGSAP(() => {
     const timer = setTimeout(() => {
       fadeAnimation();
@@ -74,9 +91,17 @@ const HomeIgnitax = () => {
           {/* project area end */}
 
           {/* project area */}
-          <ProjectTwo />
+          {/* <ProjectTwo /> */}
           {/* project area */}
 
+          <div>
+            <div id='magic-cursor'>
+              <div id='ball'></div>
+            </div>
+            {/* portfolio slider start */}
+            <PortfolioSliderHomeTwelve />
+            {/* portfolio slider end */}
+          </div>
           {/* portfolio area */}
           <PortfolioMasonryArea />
           {/* portfolio area */}
