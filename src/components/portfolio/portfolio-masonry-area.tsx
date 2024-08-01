@@ -57,40 +57,42 @@ export default function PortfolioMasonryArea() {
   useEffect(() => {
     initIsotop();
   }, [initIsotop]);
-  
+
   return (
-    <div className="pm-project-masonary-area">
-      <div className="container container-1800">
-        <div className="row gx-0 grid-2" ref={isotopContainer}>
+    <div className='pm-project-masonary-area'>
+      <div className='container container-1800'>
+        <div className='row gx-0 grid-2' ref={isotopContainer}>
           {portfolio_masonry_data.map((item) => (
             <div
               key={item.id}
               className={`col-xl-${item.id === 6 ? 12 : 6} grid-item`}
             >
-              <div className="pm-project-masonary-item p-relative">
-                <div className="fix">
+              <div className='pm-project-masonary-item p-relative'>
+                <div className='fix'>
                   <Image
                     src={item.img}
-                    alt="masonry-img"
+                    alt='masonry-img'
                     style={{ height: "auto" }}
                   />
                 </div>
-                <div className="pm-project-masonary-content">
-                  <span className="pm-project-masonary-subtitle">
+                <div className='pm-project-masonary-content'>
+                  <span className='pm-project-masonary-subtitle'>
                     {item.subtitle}
                   </span>
-                  <h4 className="pm-project-masonary-title">
-                    <Link href="/portfolio-details-comparison">{item.title}</Link>
+                  <h4 className='pm-project-masonary-title'>
+                    <Link href='/portfolio-details-comparison'>
+                      {item.title}
+                    </Link>
                   </h4>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="row">
-          <div className="col-xl-12">
-            <div className="tp-projct-5-2-btn-box mt-50 d-flex justify-content-center">
-              <div className="tp-hover-btn-wrapper">
+        <div className='row'>
+          <div className='col-xl-12'>
+            <div className='tp-projct-5-2-btn-box mt-50 d-flex justify-content-center'>
+              {/* <div className="tp-hover-btn-wrapper">
                 <Link
                   className="tp-btn-circle style-2 tp-hover-btn-item tp-hover-btn"
                   href="/portfolio-grid-col-4"
@@ -105,7 +107,7 @@ export default function PortfolioMasonryArea() {
                   </span>
                   <i className="tp-btn-circle-dot"></i>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

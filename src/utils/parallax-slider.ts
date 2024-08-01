@@ -1,16 +1,22 @@
 export function parallaxSlider() {
-  const images: HTMLElement[] = Array.from(document.querySelectorAll<HTMLElement>('.parallax-img'));
-  const slider = document.querySelector('.parallax-slider') as HTMLElement;
+  const slider = document.querySelector(".parallax-slider") as HTMLElement;
+  if (!slider) return;
+
+  const images: HTMLElement[] = Array.from(
+    slider.querySelectorAll<HTMLElement>(".parallax-img")
+  );
   let sliderWidth: number;
   let imageWidth: number;
   let current = 0;
   let target = 0;
   const ease = 0.05;
 
-  window.addEventListener('resize', init);
+  window.addEventListener("resize", init);
 
   images.forEach((img, idx) => {
-    img.style.backgroundImage = `url(/assets/img/home-12/portfolio/port-${idx + 1}.jpg)`;
+    img.style.backgroundImage = `url(/assets/img/home-12/portfolio/port-${
+      idx + 1
+    }.jpg)`;
   });
 
   function lerp(start: number, end: number, t: number): number {
@@ -24,7 +30,9 @@ export function parallaxSlider() {
   function init() {
     sliderWidth = slider.getBoundingClientRect().width;
     imageWidth = sliderWidth / images.length;
-    document.body.style.height = `${sliderWidth - (window.innerWidth - window.innerHeight)}px`;
+    document.body.style.height = `${
+      sliderWidth - (window.innerWidth - window.innerHeight)
+    }px`;
   }
 
   function animate() {
@@ -40,10 +48,11 @@ export function parallaxSlider() {
     let intersectionRatioValue: number;
 
     images.forEach((image, idx) => {
-      intersectionRatioValue = ratio - (idx * 0.7);
+      intersectionRatioValue = ratio - idx * 0.7;
       setTransform(image, `translateX(${intersectionRatioValue * 100}px)`);
     });
   }
+
   init();
   animate();
 }

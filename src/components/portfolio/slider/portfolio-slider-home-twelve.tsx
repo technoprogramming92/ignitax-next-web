@@ -47,22 +47,23 @@ export default function PortfolioSliderHomeTwelve() {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <div className="parallax-slider-wrapper">
-      <div className="parallax-slider">
-        <div className="parallax-slider-inner">
+    <div className='parallax-slider-wrapper'>
+      <div className='parallax-slider'>
+        <div className='parallax-slider-inner'>
           {slider_data.map((item) => (
             <div
-              className="parallax-item not-hide-cursor"
-              data-cursor="View<br>Demo"
+              className='parallax-item not-hide-cursor'
+              data-cursor='View<br>Demo'
               key={item.id}
             >
-              <Link className="cursor-hide" href="/portfolio-showcase-details">
-                <div className="parallax-content">
+              <Link className='cursor-hide' href='/portfolio-showcase-details'>
+                <div className='parallax-content'>
                   <span>{item.subtitle}</span>
                   <h4>{item.title}</h4>
                 </div>
-                <div className="parallax-img"></div>
+                <div className='parallax-img'></div>
               </Link>
             </div>
           ))}

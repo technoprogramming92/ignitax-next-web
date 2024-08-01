@@ -5,7 +5,12 @@ import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper/modules";
 import { SwiperOptions } from "swiper/types";
 import Image from "next/image";
 import Link from "next/link";
-import {addEvents, slideNextTransitionStart,slidePrevTransitionStart, verTextFragment} from "@/utils/webgl-anim";
+import {
+  addEvents,
+  slideNextTransitionStart,
+  slidePrevTransitionStart,
+  verTextFragment,
+} from "@/utils/webgl-anim";
 import { WebGL } from "@/plugins";
 // images
 import showcase_1 from "@/assets/img/inner-project/showcase/showcase-1.jpg";
@@ -37,11 +42,21 @@ const slider_data = [
   },
 ];
 
+const handleReachEnd = (swiper: any) => {
+  swiper.el.style.overflowX = "scroll";
+};
+
+const handleSlideChange = (swiper: any) => {
+  if (swiper.isBeginning) {
+    swiper.el.style.overflowX = "hidden";
+  }
+};
+
 // slider setting
 const slider_setting: SwiperOptions = {
   direction: "horizontal",
   loop: false,
-  slidesPerView:1,
+  slidesPerView: 1,
   touchStartPreventDefault: false,
   speed: 1000,
   autoplay: {
@@ -69,14 +84,13 @@ export default function PortfolioSliderHomeEleven() {
 
   useEffect(() => {
     if (webGLContainerRef.current) {
-
-      const webGL = new WebGL( {
+      const webGL = new WebGL({
         vertex: verTextFragment().vertex,
-			  fragment: verTextFragment().fragment,
+        fragment: verTextFragment().fragment,
       });
 
       // Instantiate WebGL
-      addEvents(webGL)
+      addEvents(webGL);
       // Append renderer element to container
       webGLContainerRef.current.appendChild(webGL.renderer.domElement);
 
@@ -87,54 +101,60 @@ export default function PortfolioSliderHomeEleven() {
       };
     }
   }, []);
+
   return (
-    <div id="port-showcase-slider-main">
-      <div className="port-showcase-slider-spaces p-relative">
+    <div id='port-showcase-slider-main'>
+      <div className='port-showcase-slider-spaces p-relative'>
         <div
-          className="port-showcase-slider-wrap tp-slider-parallax fix"
-          id="showcase-slider-holder"
-          data-pattern-img="/assets/img/webgl/1.jpg"
+          className='port-showcase-slider-wrap tp-slider-parallax fix'
+          id='showcase-slider-holder'
+          data-pattern-img='/assets/img/webgl/1.jpg'
         >
           <div
-            className="swiper-container parallax-slider-active p-relative"
-            id="showcase-slider"
+            className='swiper-container parallax-slider-active p-relative'
+            id='showcase-slider'
           >
             <Swiper
-              direction="horizontal"
-              slidesPerView="auto"
+              direction='horizontal'
+              slidesPerView='auto'
               touchStartPreventDefault={false}
               speed={1000}
-              effect="fade"
-              loop={true}                 
-              mousewheel={true}
+              effect='fade'
+              loop={false}
+              mousewheel={false}
               simulateTouch={true}
               navigation={{
-                nextEl: '.swiper-next',
-                prevEl: '.swiper-prev',
+                nextEl: ".swiper-next",
+                prevEl: ".swiper-prev",
               }}
               pagination={{
-                el: '.tp-slider-dot',
+                el: ".tp-slider-dot",
                 clickable: true,
               }}
               modules={[Navigation, Pagination, Autoplay, Mousewheel]}
               onSlidePrevTransitionStart={slidePrevTransitionStart}
               onSlideNextTransitionStart={slideNextTransitionStart}
-              id="trigger-slides"
+              onReachEnd={handleReachEnd}
+              onSlideChange={handleSlideChange}
+              id='trigger-slides'
             >
-              {slider_data.map((item,i) => (
+              {slider_data.map((item, i) => (
                 <SwiperSlide key={item.id}>
-                  <div className={`slide-wrap ${i === 0 ? 'active' : ''}`} data-slide={i}></div>
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-xl-8">
-                        <div className="port-showcase-slider-item">
-                          <div className="port-showcase-slider-content">
-                            <span className="port-showcase-slider-subtitle">
+                  <div
+                    className={`slide-wrap ${i === 0 ? "active" : ""}`}
+                    data-slide={i}
+                  ></div>
+                  <div className='container'>
+                    <div className='row'>
+                      <div className='col-xl-8'>
+                        <div className='port-showcase-slider-item'>
+                          <div className='port-showcase-slider-content'>
+                            <span className='port-showcase-slider-subtitle'>
                               {item.subtitle}
                             </span>
-                            <h4 className="port-showcase-slider-title">
+                            <h4 className='port-showcase-slider-title'>
                               <Link
-                                href="/portfolio-showcase-details"
+                                href='/portfolio-showcase-details'
                                 dangerouslySetInnerHTML={{ __html: item.title }}
                               ></Link>
                             </h4>
@@ -146,35 +166,41 @@ export default function PortfolioSliderHomeEleven() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="tp-showcase-arrow-box">
-              <button className="tp-showcase__button-next swiper-next">
-                <i className="fa-light fa-angle-up"></i>
+            <div className='tp-showcase-arrow-box'>
+              <button className='tp-showcase__button-next swiper-next'>
+                <i className='fa-light fa-angle-up'></i>
               </button>
-              <button className="tp-showcase__button-prev swiper-prev">
-                <i className="fa-light fa-angle-down"></i>
+              <button className='tp-showcase__button-prev swiper-prev'>
+                <i className='fa-light fa-angle-down'></i>
               </button>
             </div>
-            <div className="tp-slider-dot d-none d-md-block"></div>
-            <div className="port-showcase-slider-social tp-hover-btn-wrapper d-none d-md-block">
-              <a className="tp-hover-btn-item" href="#">Fb</a>
-              <a className="tp-hover-btn-item" href="#">In</a>
-              <a className="tp-hover-btn-item" href="#">Be</a>
+            <div className='tp-slider-dot d-none d-md-block'></div>
+            <div className='port-showcase-slider-social tp-hover-btn-wrapper d-none d-md-block'>
+              <a className='tp-hover-btn-item' href='#'>
+                Fb
+              </a>
+              <a className='tp-hover-btn-item' href='#'>
+                In
+              </a>
+              <a className='tp-hover-btn-item' href='#'>
+                Be
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       {/*  canvas slider */}
-      <div id="canvas-slider" className="canvas-slider" ref={webGLContainerRef}>
+      <div id='canvas-slider' className='canvas-slider' ref={webGLContainerRef}>
         {slider_images.map((imgSrc, index) => (
-        <div key={index} className="slider-img" data-slide={index}>
-          <Image
-            className="slide-img"
-            src={imgSrc}
-            alt="showcase-img"
-            style={{ height: "auto" }}
-          />
-        </div>
+          <div key={index} className='slider-img' data-slide={index}>
+            <Image
+              className='slide-img'
+              src={imgSrc}
+              alt='showcase-img'
+              style={{ height: "auto" }}
+            />
+          </div>
         ))}
       </div>
       {/* canvas slider  */}
