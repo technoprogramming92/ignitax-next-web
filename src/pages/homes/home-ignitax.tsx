@@ -22,7 +22,6 @@ import {
   titleAnimation,
 } from "@/utils/title-animation";
 import { projectThreeAnimation } from "@/utils/project-anim";
-import { ctaAnimation } from "@/utils/cta-anim";
 import { panelOneAnimation, studioPanel } from "@/utils/panel-animation";
 import StudioPanelOne from "@/components/studio-panels/studio-panel-1";
 import StudioPanelTwo from "@/components/studio-panels/studio-panel-2";
@@ -34,11 +33,9 @@ import { hoverBtn } from "@/utils/hover-btn";
 import HeroBannerSix from "@/components/hero-banner/hero-banner-six";
 import { useEffect } from "react";
 import BottomNavbar from "@/layouts/headers/BottomNavbar";
-import PortfolioSliderHomeTwelve from "@/components/portfolio/slider/portfolio-slider-home-twelve";
-import PortfolioSliderHomeEleven from "@/components/portfolio/slider/portfolio-slider-home-eleven";
-import TeamOne from "@/components/team/team-one";
+
 import { teamMarqueAnim } from "@/utils/scroll-marque";
-import useScrollSmooth from "@/hooks/use-scroll-smooth";
+
 import { videoAnimOne } from "@/utils/video-anim";
 import ProjectTwo from "@/components/project/project-two";
 import InstagramArea from "@/components/instagram/instagram-area";

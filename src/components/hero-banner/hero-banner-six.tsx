@@ -1,7 +1,13 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectFade,
+  Mousewheel,
+} from "swiper/modules";
 import { SwiperOptions } from "swiper/types";
 import Link from "next/link";
 
@@ -27,42 +33,42 @@ const hero_data = [
 ];
 
 export default function HeroBannerSix() {
+  const [isLastSlide, setIsLastSlide] = useState(false);
+  const handleReachEnd = (swiper: any) => {
+    setIsLastSlide(true);
+  };
+
   const progressBar = useRef<HTMLSpanElement | null>(null);
   const slider_setting: SwiperOptions = {
-    slidesPerView: 1,
+    direction: "horizontal",
     loop: false,
-    spaceBetween: 0,
+    slidesPerView: 1,
+    touchStartPreventDefault: false,
     speed: 1000,
-    effect: "fade",
-    navigation: {
-      prevEl: ".tp-shop-prev",
-      nextEl: ".tp-shop-next",
-    },
     autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
+      delay: 5000,
+    },
+    mousewheel: true,
+    simulateTouch: true,
+    navigation: {
+      nextEl: ".swiper-next",
+      prevEl: ".swiper-prev",
     },
     pagination: {
-      el: "#paginations",
-      type: "custom",
-      renderCustom: function (swiper, current, total) {
-        const zero = total > 9 ? "" : "0";
-        const index = zero + current;
-        const all = zero + total;
-        const html = `<div class="shop-slider-pagination">
-                  <span>${index}</span>
-                  <span>${all}</span>
-                </div>`;
-        return html;
+      el: ".tp-slider-dot",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<div className="' + className + '"></div>';
       },
     },
   };
+
   return (
     <div className='tp-shop-slider-area p-relative'>
       <div className='shop-slider-wrapper'>
         <Swiper
           {...slider_setting}
-          modules={[Navigation, Pagination, Autoplay, EffectFade]}
+          modules={[Navigation, Pagination, Autoplay, EffectFade, Mousewheel]}
           className='swiper-container tp-shop-slider-active'
           onAutoplayTimeLeft={(s, time, progress) => {
             progressBar.current &&
